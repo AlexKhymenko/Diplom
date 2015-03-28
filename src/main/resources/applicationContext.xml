@@ -1,0 +1,127 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd ">
+
+    <aop:aspectj-autoproxy/>
+
+    <context:component-scan base-package="com.ishop">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <tx:annotation-driven/>
+
+    <bean id="applicationContextProvider" class="com.nsn.cronos.cm.util.spring.ApplicationContextProvider"/>
+
+
+    <context:annotation-config/>
+
+    &lt;!&ndash;########################################## Base CM module Database connection ############################    &ndash;&gt;
+
+    <bean id="cm-data-source" class="com.mysql.jdbc.Driver" factory-method="getPoolDataSource">
+        <property name="connectionFactoryClassName" value="oracle.jdbc.pool.OracleDataSource"/>
+        <property name="URL" value="${cm.db.url}"/>
+        <property name="user" value="${common.cm.db.username}"/>
+        <property name="password" value="${common.cm.db.password}"/>
+        <property name="minPoolSize" value="${common.db.connectionPool.MinLimit}"/>
+        <property name="maxPoolSize" value="${common.db.connectionPool.MaxLimit}"/>
+        <property name="initialPoolSize" value="${common.db.connectionPool.InitialLimit}"/>
+        <property name="connectionWaitTimeout" value="${common.db.connectionPool.ConnectionWaitTimeout}"/>
+        <property name="inactiveConnectionTimeout" value="${common.db.connectionPool.InactivityTimeout}"/>
+        <property name="validateConnectionOnBorrow" value="${common.db.connectionPool.ValidateConnection}"/>
+        <property name="connectionProperties">
+            <value>
+                oracle.jdbc.defaultNChar=true
+            </value>
+        </property>
+    </bean>
+
+    <bean id="cm-session-factory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="cm-data-source"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.nsn.cronos.cm.ws.ssdp.entity</value>
+                <value>com.nsn.cronos.cm.entity</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">com.nsn.cronos.cm.util.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="cm-transaction-manager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="cm-session-factory"/>
+        <qualifier value="cm"/>
+    </bean>
+
+    &lt;!&ndash;######################################### Cronos File  Database connection ############################    &ndash;&gt;
+
+    <bean id="cronos-file-data-source" class="oracle.ucp.jdbc.PoolDataSourceFactory" factory-method="getPoolDataSource">
+        <property name="connectionFactoryClassName" value="oracle.jdbc.pool.OracleDataSource"/>
+        <property name="URL" value="${cronosfile.db.url}"/>
+        <property name="user" value="${common.cronos.file.db.username}"/>
+        <property name="password" value="${common.cronos.file.db.password}"/>
+        <property name="minPoolSize" value="${common.db.connectionPool.MinLimit}"/>
+        <property name="maxPoolSize" value="${common.db.connectionPool.MaxLimit}"/>
+        <property name="initialPoolSize" value="${common.db.connectionPool.InitialLimit}"/>
+        <property name="connectionWaitTimeout" value="${common.db.connectionPool.ConnectionWaitTimeout}"/>
+        <property name="inactiveConnectionTimeout" value="${common.db.connectionPool.InactivityTimeout}"/>
+        <property name="validateConnectionOnBorrow" value="${common.db.connectionPool.ValidateConnection}"/>
+        <property name="connectionProperties">
+            <value>
+                oracle.jdbc.defaultNChar=true
+            </value>
+        </property>
+    </bean>
+
+    <bean id="cronos-file-session-factory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="cronos-file-data-source"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.nsn.cronos.cm.entity.documents</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">com.nsn.cronos.cm.util.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.use_sql_comments">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="cronos-file-transaction-manager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="cronos-file-session-factory"/>
+        <qualifier value="cronos-file"/>
+    </bean>
+
+    <bean id="com.nsn.quartz.AutowireSchedulerFactoryBean" class="com.nsn.cronos.cm.util.quartz.AutowireSchedulerFactoryBean"/>
+
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+        <property name="autoStartup" value="true"/>
+        <property name="startupDelay" value="20"/>
+        <property name="configLocation" value="classpath:quartz.properties"/>
+        <property name="jobFactory" ref="com.nsn.quartz.AutowireSchedulerFactoryBean" />
+        <property name="applicationContextSchedulerContextKey">
+            <value>applicationContext</value>
+        </property>
+    </bean>
+
+</beans>-->
