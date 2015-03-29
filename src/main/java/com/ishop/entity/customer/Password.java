@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Password {
 
     @Id
-    @Column(name="customerId", unique=true, nullable=false)
+    @Column(name="customer_id", unique=true, nullable=false)
     @GeneratedValue(generator="gen")
     @GenericGenerator(name="gen", strategy="foreign", parameters=@Parameter(name="property", value="customer"))
     private Long customerId;

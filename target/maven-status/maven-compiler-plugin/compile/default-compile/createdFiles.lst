@@ -1,7 +1,9 @@
 com/ishop/entity/customer/Address.class
+com/ishop/dao/CustomerDao.class
 com/ishop/entity/customer/Gender.class
 com/ishop/main/Main.class
 com/ishop/entity/customer/Customer.class
 com/ishop/entity/customer/Role.class
 Main.class
+com/ishop/controller/AddUserController.class
 com/ishop/entity/customer/Password.class

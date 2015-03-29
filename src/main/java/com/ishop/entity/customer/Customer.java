@@ -17,6 +17,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "customer_id")
     private long customerId;
 
     @Column(unique = true)
@@ -28,7 +29,7 @@ public class Customer {
     @NotEmpty
     private String email;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Password password;
 
