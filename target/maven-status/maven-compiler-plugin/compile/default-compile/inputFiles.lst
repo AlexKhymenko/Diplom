@@ -1,9 +1,11 @@
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/controller/AddUserController.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/entity/customer/Address.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/entity/customer/Role.java
+/Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/dao/BaseDaoImpl.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/entity/customer/Customer.java
-/Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/dao/CustomerDao.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/entity/customer/Password.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/entity/customer/Gender.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/main/Main.java
+/Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/dao/customer/CustomerDao.java
 /Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/Main.java
+/Users/alexkhymenko/Documents/diplom/Diplom/src/main/java/com/ishop/dao/BaseDao.java
